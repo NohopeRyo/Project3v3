@@ -67,7 +67,7 @@ namespace Project_3_v3.Areas.AdminShop.Controllers
         }
 
         // GET: AdminShop/Customers/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
             if (id == null)
             {
@@ -118,7 +118,7 @@ namespace Project_3_v3.Areas.AdminShop.Controllers
         }
 
         // GET: AdminShop/Customers/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
             if (id == null)
             {

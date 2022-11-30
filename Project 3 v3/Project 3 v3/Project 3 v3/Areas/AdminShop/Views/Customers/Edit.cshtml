@@ -1,0 +1,104 @@
+﻿@model Project_3_v3.Models.Customer
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/AdminShop/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="container-xxl flex-grow-1 container-p-y" ng-controller="Customers">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Quản lý/Quản lý khách hàng/</span> Sửa thông tin khách hàng</h4>
+    <div class="col-xxl">
+        <div class="card mb-4">
+            <div class="card-header d-flex align-items-center justify-content-between">
+                <h5 class="mb-0">Thông tin khách hàng</h5>
+            </div>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="card-body">
+                <form>
+                    <input id="id" hidden value="@Model.CusID" type="text" class="form-control" placeholder="Ma" aria-label="Username" aria-describedby="basic-addon1">
+                    @Html.ValidationMessageFor(model => model.CusID, "", new { @class = "text-danger" })
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="basic-icon-default-company">Tên khách hàng</label>
+                        <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-company2" class="input-group-text">
+                                    <i class="bx bx-music"></i>
+                                </span>
+                                <input ng-model="customer.CusName" type="text" class="form-control" placeholder="Ten" aria-label="Username" aria-describedby="basic-icon-default-fullname2">
+                            </div>
+                            @Html.ValidationMessageFor(model => model.CusName, "", new { @class = "text-danger" })
+                        </div>
+                        <label class="col-sm-2 col-form-label" for="basic-icon-default-company">Số điện thoại</label>
+                        <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-company2" class="input-group-text">
+                                    <i class="bx bx-phone"></i>
+                                </span>
+                                <input ng-model="customer.Phone" type="text" class="form-control" placeholder="number" aria-label="number" aria-describedby="basic-icon-default-phone2">
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Phone, "")
+                        </div>
+                        <label class="col-sm-2 col-form-label" for="basic-icon-default-company">Email</label>
+                        <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-company2" class="input-group-text">
+                                    <i class="bx bx-envelope"></i>
+                                </span>
+                                <input ng-model="customer.Email" type="text" class="form-control" placeholder="email" aria-label="email" aria-describedby="basic-icon-default-email2">
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Email)
+                        </div>
+                        <label class="col-sm-2 col-form-label" for="basic-icon-default-company">Địa chỉ khách hàng</label>
+                        <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-company2" class="input-group-text">
+                                    <i class="bx bx-map"></i>
+                                </span>
+                                <input ng-model="customer.Address" type="text" class="form-control" placeholder="Place" aria-label="place" aria-describedby="basic-icon-default-company2">
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row justify-content-end">
+                        <div class="col-sm-10">
+                            <input ng-click="Edit()" value="Edit" class="btn btn-primary" />
+                            @Html.ActionLink("Back to List", "Index")
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<script src="~/Scripts/angular.min.js"></script>
+<script>
+    var app = angular.module('Rogost', []);
+
+    app.controller('Customers', function ($scope, $http, $window) {
+        $scope.customer = {}
+
+        var config = {
+            params: {
+                id: $("#id").val(),
+            }
+        }
+
+        $http.get("/AdminShop/Customers/GetByID", config).then(function (result) {
+            $scope.customer = result.data;
+            console.log($scope.customer)
+        }, function (error) {
+            alert("404 Error")
+        });
+
+        $scope.Edit = Edit;
+        function Edit() {
+
+            $http.post("/AdminShop/Customers/Edit", $scope.customer).then(function (result) {
+                $window.location.href = '/AdminShop/Customers';
+            }, function (error) {
+                console.log($scope.customer)
+                alert("404 Error")
+            });
+        }
+    });
+</script>

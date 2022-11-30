@@ -496,6 +496,8 @@
     <Content Include="Areas\AdminShop\Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Areas\AdminShop\Views\Login\Index.cshtml" />
     <Content Include="Areas\AdminShop\Views\Customers\Index.cshtml" />
+    <Content Include="Areas\AdminShop\Views\Customers\Edit.cshtml" />
+    <Content Include="Areas\AdminShop\Views\Customers\Delete.cshtml" />
     <None Include="Scripts\jquery-3.6.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.1.js" />
     <Content Include="Scripts\jquery-3.6.1.min.js" />
