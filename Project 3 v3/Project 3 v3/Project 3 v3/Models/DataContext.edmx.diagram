@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b6476ede0029455c99fcfa2477b02ae9" Name="Diagram1" ZoomLevel="73">
+        <EntityTypeShape EntityType="dataver2Model.Category" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="dataver2Model.Customer" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dataver2Model.ImportBill" Width="1.5" PointX="7.5" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dataver2Model.ImportBillDetail" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dataver2Model.News" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dataver2Model.Order" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="dataver2Model.OrderDetail" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dataver2Model.Product" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dataver2Model.Provider" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dataver2Model.sysdiagram" Width="1.5" PointX="9.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dataver2Model.User" Width="1.5" PointX="5.25" PointY="10.25" IsExpanded="true" />
+        <AssociationConnector Association="dataver2Model.FK_Products_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="dataver2Model.FK_Order_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="dataver2Model.FK_ImportBill_ImportBillDetail" ManuallyRouted="false" />
+        <AssociationConnector Association="dataver2Model.FK_ImportBill_Provider" ManuallyRouted="false" />
+        <AssociationConnector Association="dataver2Model.FK_ImportBill_User" ManuallyRouted="false" />
+        <AssociationConnector Association="dataver2Model.FK_ImportBillDetail_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="dataver2Model.FK_OrderDetail_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="dataver2Model.FK_OrderDetail_Products" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,2 @@
+C:\Users\long1\Desktop\Project 3 v3\Project 3 v3\obj\Release\Project 3 v3.csproj.AssemblyReference.cache
+C:\Users\long1\Desktop\Project 3 v3\Project 3 v3\obj\Release\Project 3 v3.csproj.CoreCompileInputs.cache

@@ -1,0 +1,117 @@
+﻿@model Project_3_v3.Models.Product
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/AdminShop/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div ng-controller="Products">
+    <h2>Sửa</h2>
+    <form>
+        <div class="form-horizontal">
+            <h4>Bài nhạc</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <div class="col-md-10">
+
+                    <input id="id" hidden value="@Model.ProID" type="text" class="form-control" placeholder="Ma" aria-label="Username" aria-describedby="basic-addon1">
+                    @Html.ValidationMessageFor(model => model.ProID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Mã thể loại nhạc</label>
+                <div class="col-md-10">
+                    <input ng-model="product.CateID" type="text" class="form-control" placeholder="Mã Thể Loại Nhạc" aria-label="Username" aria-describedby="basic-addon1">
+                    @Html.ValidationMessageFor(model => model.CateID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Tên bài nhạc</label>
+                <div class="col-md-10">
+                    <input ng-model="product.Title" type="text" class="form-control" placeholder="Tên Bài Hát" aria-label="Username" aria-describedby="basic-addon1">
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Hình ảnh</label>
+                <div class="col-md-10">
+                    <input ng-model="product.Image" type="text" class="form-control" placeholder="Đường dẫn" aria-label="Username" aria-describedby="basic-addon1">
+                    @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Thông tin chi tiết</label>
+                <div class="col-md-10">
+                    <input ng-model="product.Description" type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Số lượng</label>
+                <div class="col-md-10">
+                    <input ng-model="product.Quantity" type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+                    @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Giá gốc</label>
+                <div class="col-md-10">
+                    <input ng-model="product.Price" type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+                    @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Giá sale</label>
+                <div class="col-md-10">
+                    <input ng-model="product.PromotionPrice" type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+                    @Html.ValidationMessageFor(model => model.PromotionPrice, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input ng-click="Edit()" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </form>
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</div>
+
+
+<script src="~/Scripts/angular.min.js"></script>
+<script>
+    var app = angular.module('Rogost', []);
+
+    app.controller('Products', function ($scope, $http, $window) {
+        $scope.product = {}
+
+        var config = {
+            params: {
+                id: $("#id").val(),
+            }
+        }
+
+        $http.get("/AdminShop/Products/GetByID", config).then(function (result) {
+            $scope.product = result.data;
+            console.log($scope.category)
+        }, function (error) {
+            alert("404 Error")
+        });
+
+        $scope.Edit = Edit;
+        function Edit() {
+
+            $http.post("/AdminShop/Products/Edit", $scope.product).then(function (result) {
+                $window.location.href = '/AdminShop/Products';
+            }, function (error) {
+                console.log($scope.product)
+                alert("404 Error")
+            });
+        }
+
+    });
+</script>

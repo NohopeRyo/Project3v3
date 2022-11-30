@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Project_3_v3.Models.Order>
+
+@{
+    ViewBag.Title = "Đơn hàng";
+    Layout = "~/Areas/AdminShop/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="container-xxl flex-grow-1 container-p-y" ng-controller="Orders">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Quản lý /</span> Quản lý đơn hàng</h4>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <div class="card">
+        <h5 class="card-header">Danh sách đơn hàng</h5>
+        <div class="table-responsive text-nowrap">
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.OrderDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DeliveryAddress)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TotalPay)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Customer.CusName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.OrderDetail.OrdID)
+                    </th>
+                    <th></th>
+                </tr>
+                <tr ng-repeat="item in order">
+                    <td>
+                        {{item.OrderDate}}
+                    </td>
+                    <td>
+                        {{item.DeliveryAddress}}
+                    </td>
+                    <td>
+                        {{item.Status}}
+                    </td>
+                    <td>
+                        {{item.TotalPay}}
+                    </td>
+                    <td>
+                        {{item.CusID}}
+                    </td>
+                    <td>
+                        {{item.OrdID}}
+                    </td>
+                    <td>
+                        <a href="/AdminShop/Orders/Edit/{{item.OrdID}}">Sửa</a>
+                        @*@Html.ActionLink("Edit", "Edit", new { id = item.MaLoaiSa }) |*@
+                        @*@Html.ActionLink("Details", "Details", new { id = item.MaLoaiSanPham }) |*@
+                        <a href="/AdminShop/Orders/Delete/{{item.OrdID}}">Xoá</a>
+                    </td>
+                </tr>
+            </table>
+            <script src="~/Scripts/angular.min.js"></script>
+            <script>
+                var app = angular.module('Rogost', []);
+
+                app.controller('Orders', function ($scope, $http) {
+                    $scope.orders = []
+                    $http.get("/AdminShop/Orders/Get", null).then(function (result) {
+                        $scope.orders = result.data;
+                        console.log($scope.orders)
+                    }, function (error) {
+                        alert("404 Error")
+                    });
+                });
+            </script>
