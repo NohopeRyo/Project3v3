@@ -34,7 +34,7 @@ namespace Project_3_v3.Areas.AdminShop.Controllers
         }
 
         // GET: AdminShop/Customers/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
             if (id == null)
             {
