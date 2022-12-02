@@ -74,7 +74,7 @@ namespace Project_3_v3.Areas.AdminShop.Controllers
         //}
 
         // GET: AdminShop/Categories/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {

@@ -22,9 +22,10 @@
                                     <i class="bx bx-user-plus"></i>
                                 </span>
                                 <input ng-model="category.CateID" type="text" class="form-control" placeholder="Ma" aria-label="Username" aria-describedby="basic-addon1">
-                                @Html.ValidationMessageFor(model => model.CateID, "", new { @class = "text-danger" })
+
                             </div>
                         </div>
+                        @Html.ValidationMessageFor(model => model.CateID, "", new { @class = "text-danger" })
                     </div>
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label" for="basic-icon-default-company">Tên</label>
@@ -34,9 +35,11 @@
                                     <i class="bx bx-music"></i>
                                 </span>
                                 <input ng-model="category.CateName" type="text" class="form-control" placeholder="Ten" aria-label="Username" aria-describedby="basic-addon1">
-                                @Html.ValidationMessageFor(model => model.CateName, "", new { @class = "text-danger" })
+
                             </div>
+
                         </div>
+                        @Html.ValidationMessageFor(model => model.CateName, "", new { @class = "text-danger" })
                     </div>
                     <div class="row justify-content-end">
                         <div class="col-sm-10">
