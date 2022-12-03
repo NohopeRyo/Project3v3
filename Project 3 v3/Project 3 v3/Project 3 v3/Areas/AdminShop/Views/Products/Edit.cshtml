@@ -5,79 +5,111 @@
     Layout = "~/Areas/AdminShop/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-
-<div ng-controller="Products">
-    <h2>Sửa</h2>
-    <form>
-        <div class="form-horizontal">
-            <h4>Bài nhạc</h4>
-            <hr />
+<div class="container-xxl flex-grow-1 container-p-y" ng-controller="Products">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Quản lý/Quản lý bài nhạc/</span> Sửa bài nhạc</h4>
+    <div class="col-xxl">
+        <div class="card mb-4">
+            <div class="card-header d-flex align-items-center justify-content-between">
+                <h5 class="mb-0">Bài nhạc</h5>
+            </div>
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                <div class="col-md-10">
-
+            <div class="card-body">
+                <form>
                     <input id="id" hidden value="@Model.ProID" type="text" class="form-control" placeholder="Ma" aria-label="Username" aria-describedby="basic-addon1">
                     @Html.ValidationMessageFor(model => model.ProID, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-md-2">Mã thể loại nhạc</label>
-                <div class="col-md-10">
-                    <input ng-model="product.CateID" type="text" class="form-control" placeholder="Mã Thể Loại Nhạc" aria-label="Username" aria-describedby="basic-addon1">
-                    @Html.ValidationMessageFor(model => model.CateID, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-md-2">Tên bài nhạc</label>
-                <div class="col-md-10">
-                    <input ng-model="product.Title" type="text" class="form-control" placeholder="Tên Bài Hát" aria-label="Username" aria-describedby="basic-addon1">
-                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-md-2">Hình ảnh</label>
-                <div class="col-md-10">
-                    <input ng-model="product.Image" type="text" class="form-control" placeholder="Đường dẫn" aria-label="Username" aria-describedby="basic-addon1">
-                    @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-md-2">Thông tin chi tiết</label>
-                <div class="col-md-10">
-                    <input ng-model="product.Description" type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
-                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-md-2">Số lượng</label>
-                <div class="col-md-10">
-                    <input ng-model="product.Quantity" type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
-                    @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-md-2">Giá gốc</label>
-                <div class="col-md-10">
-                    <input ng-model="product.Price" type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
-                    @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-md-2">Giá sale</label>
-                <div class="col-md-10">
-                    <input ng-model="product.PromotionPrice" type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
-                    @Html.ValidationMessageFor(model => model.PromotionPrice, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input ng-click="Edit()" value="Create" class="btn btn-default" />
-                </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="basic-icon-default-company">Mã thể loại nhạc</label>
+                        <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-company2" class="input-group-text">
+                                    <i class="bx bx-music"></i>
+                                </span>
+                                <input ng-model="product.CateID" type="text" class="form-control" placeholder="ID" aria-label="Username" aria-describedby="basic-addon1">
+                                @Html.ValidationMessageFor(model => model.CateID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="basic-icon-default-company">Tên</label>
+                        <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-company2" class="input-group-text">
+                                    <i class="bx bx-music"></i>
+                                </span>
+                                <input ng-model="product.Title" type="text" class="form-control" placeholder="Tên" aria-label="Username" aria-describedby="basic-addon1">
+                                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="basic-icon-default-company">Hình ảnh</label>
+                        <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-company2" class="input-group-text">
+                                    <i class="bx bx-music"></i>
+                                </span>
+                                <input ng-model="product.Image" type="text" class="form-control" placeholder="Đường dẫn" aria-label="Username" aria-describedby="basic-addon1">
+                                @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="basic-icon-default-company">Thông tin bài nhạc</label>
+                        <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-company2" class="input-group-text">
+                                    <i class="bx bx-music"></i>
+                                </span>
+                                <input ng-model="product.Description" type="text" class="form-control" placeholder="Thông tin" aria-label="Username" aria-describedby="basic-addon1">
+                                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="basic-icon-default-company">Số lượng</label>
+                        <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-company2" class="input-group-text">
+                                    <i class="bx bx-music"></i>
+                                </span>
+                                <input ng-model="product.Quantity" type="text" class="form-control" placeholder="Number" aria-label="Username" aria-describedby="basic-addon1">
+                                @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="basic-icon-default-company">Giá</label>
+                        <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-company2" class="input-group-text">
+                                    <i class="bx bx-music"></i>
+                                </span>
+                                <input ng-model="product.Price" type="text" class="form-control" placeholder="Ten" aria-label="Username" aria-describedby="basic-addon1">
+                                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="basic-icon-default-company">Giá Sale</label>
+                        <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-company2" class="input-group-text">
+                                    <i class="bx bx-music"></i>
+                                </span>
+                                <input ng-model="product.PromotionPrice" type="text" class="form-control" placeholder="Ten" aria-label="Username" aria-describedby="basic-addon1">
+                                @Html.ValidationMessageFor(model => model.PromotionPrice, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-end">
+                        <div class="col-sm-10">
+                            <input ng-click="Edit()" value="Edit" class="btn btn-primary" />
+                            @Html.ActionLink("Back to List", "Index")
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-    </form>
-    <div>
-        @Html.ActionLink("Back to List", "Index")
     </div>
 </div>
 

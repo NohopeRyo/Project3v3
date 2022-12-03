@@ -6,9 +6,7 @@
 }
 <div class="container-xxl flex-grow-1 container-p-y" ng-controller="Providers">
     <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Quản lý /</span> Quản lý nhà sản xuất</h4>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
+    <a class="btn btn-primary" href="/AdminShop/Providers/Create"><i class="bx bx-plus-circle"></i> Thêm mới</a>
     <div class="card">
         <h5 class="card-header">Danh sách nhà sản xuất</h5>
         <div class="table-responsive text-nowrap">
@@ -42,10 +40,8 @@
                         {{item.Email}}
                     </td>
                     <td>
-                        <a href="/AdminShop/Providers/Edit/{{item.PrvID}}">Sửa</a>
-                        @*@Html.ActionLink("Edit", "Edit", new { id = item.MaLoaiSa }) |*@
-                        @*@Html.ActionLink("Details", "Details", new { id = item.MaLoaiSanPham }) |*@
-                        <a href="/AdminShop/Providers/Delete/{{item.PrvName}}">Xoá</a>
+                        <a href="/AdminShop/Providers/Edit/{{item.PrvID}}" class="btn btn-outline-secondary"><i class="tf-icons bx bx-edit"></i></a>
+                        <a href="/AdminShop/Providers/Delete/{{item.PrvID}}" class="btn btn-outline-secondary"> <i class="tf-icons bx bx-trash"></i></a>
                     </td>
                 </tr>
             </table>
