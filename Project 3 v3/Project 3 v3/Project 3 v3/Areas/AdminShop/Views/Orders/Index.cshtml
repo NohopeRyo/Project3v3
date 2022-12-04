@@ -6,9 +6,6 @@
 }
 <div class="container-xxl flex-grow-1 container-p-y" ng-controller="Orders">
     <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Quản lý /</span> Quản lý đơn hàng</h4>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
     <div class="card">
         <h5 class="card-header">Danh sách đơn hàng</h5>
         <div class="table-responsive text-nowrap">
@@ -54,24 +51,26 @@
                         {{item.OrdID}}
                     </td>
                     <td>
-                        <a href="/AdminShop/Orders/Edit/{{item.OrdID}}">Sửa</a>
-                        @*@Html.ActionLink("Edit", "Edit", new { id = item.MaLoaiSa }) |*@
-                        @*@Html.ActionLink("Details", "Details", new { id = item.MaLoaiSanPham }) |*@
-                        <a href="/AdminShop/Orders/Delete/{{item.OrdID}}">Xoá</a>
+                        <a href="/AdminShop/Orders/Edit/{{item.OrdID}}" class="btn btn-outline-secondary"><i class="tf-icons bx bx-edit"></i></a>
+                        <a href="/AdminShop/Orders/Delete/{{item.OrdID}}" class="btn btn-outline-secondary"> <i class="tf-icons bx bx-trash"></i></a>
                     </td>
                 </tr>
             </table>
-            <script src="~/Scripts/angular.min.js"></script>
-            <script>
-                var app = angular.module('Rogost', []);
+        </div>
+    </div>
+</div>
 
-                app.controller('Orders', function ($scope, $http) {
-                    $scope.orders = []
-                    $http.get("/AdminShop/Orders/Get", null).then(function (result) {
-                        $scope.orders = result.data;
-                        console.log($scope.orders)
-                    }, function (error) {
-                        alert("404 Error")
-                    });
-                });
-            </script>
+<script src="~/Scripts/angular.min.js"></script>
+<script>
+    var app = angular.module('Rogost', []);
+
+    app.controller('Orders', function ($scope, $http) {
+        $scope.order = []
+        $http.get("/AdminShop/Orders/Get", null).then(function (result) {
+            $scope.order = result.data;
+            console.log($scope.order)
+        }, function (error) {
+            alert("404 Error")
+        });
+    });
+</script>

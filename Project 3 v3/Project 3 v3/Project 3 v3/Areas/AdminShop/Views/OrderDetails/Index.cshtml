@@ -38,10 +38,8 @@
                         {{item.Quantity}}
                     </td>
                     <td>
-                        <a href="/AdminShop/OrderDetails/Edit/{{item.OrdID}}">Sửa</a>
-                        @*@Html.ActionLink("Edit", "Edit", new { id = item.MaLoaiSa }) |*@
-                        @*@Html.ActionLink("Details", "Details", new { id = item.MaLoaiSanPham }) |*@
-                        <a href="/AdminShop/OrderDetails/Delete/{{item.OrdID}}">Xoá</a>
+                        <a href="/AdminShop/OrderDetails/Edit/{{item.OrdID}}" class="btn btn-outline-secondary"><i class="tf-icons bx bx-edit"></i></a>
+                        <a href="/AdminShop/OrderDetails/Delete/{{item.OrdID}}" class="btn btn-outline-secondary"> <i class="tf-icons bx bx-trash"></i></a>
                     </td>
                 </tr>
 

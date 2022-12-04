@@ -6,7 +6,7 @@
 }
 <div class="container-xxl flex-grow-1 container-p-y" ng-controller="Category">
     <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Quản lý /</span> Quản lý thể loại nhạc</h4>
-     <a class="btn btn-primary" href="/AdminShop/Categories/Create"><i class="bx bx-plus-circle"></i> Thêm mới</a>
+    <a class="btn btn-primary" href="/AdminShop/Categories/Create"><i class="bx bx-plus-circle"></i> Thêm mới</a>
     <div class="card">
         <h5 class="card-header">Danh sách thể loại nhạc</h5>
         <div class="table-responsive text-nowrap">
@@ -37,18 +37,18 @@
         </div>
     </div>
 </div>
-    
-    <script src="~/Scripts/angular.min.js"></script>
-    <script>
-        var app = angular.module('Rogost', []);
 
-        app.controller('Category', function ($scope, $http) {
-            $scope.category = []
-            $http.get("/AdminShop/Categories/Get", null).then(function (result) {
-                $scope.category = result.data;
-                console.log($scope.category)
-            }, function (error) {
-                alert("404 Error")
-            });
+<script src="~/Scripts/angular.min.js"></script>
+<script>
+    var app = angular.module('Rogost', []);
+
+    app.controller('Category', function ($scope, $http) {
+        $scope.category = []
+        $http.get("/AdminShop/Categories/Get", null).then(function (result) {
+            $scope.category = result.data;
+            console.log($scope.category)
+        }, function (error) {
+            alert("404 Error")
         });
-    </script>
+    });
+</script>

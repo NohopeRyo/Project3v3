@@ -113,7 +113,7 @@ namespace Project_3_v3.Areas.AdminShop.Controllers
             return Json(true, JsonRequestBehavior.AllowGet);
         }
         // GET: AdminShop/OrderDetails/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
             if (id == null)
             {

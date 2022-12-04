@@ -482,7 +482,6 @@
     <Content Include="Areas\AdminShop\Views\Providers\Details.cshtml" />
     <Content Include="Areas\AdminShop\Views\Providers\Edit.cshtml" />
     <Content Include="Areas\AdminShop\Views\Providers\Index.cshtml" />
-    <Content Include="Areas\AdminShop\Views\Orders\Create.cshtml" />
     <Content Include="Areas\AdminShop\Views\Orders\Delete.cshtml" />
     <Content Include="Areas\AdminShop\Views\Orders\Details.cshtml" />
     <Content Include="Areas\AdminShop\Views\Orders\Edit.cshtml" />
