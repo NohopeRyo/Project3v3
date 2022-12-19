@@ -27,14 +27,13 @@ namespace Project_3_v3.Models
     
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
-        public virtual DbSet<ImportBill> ImportBills { get; set; }
-        public virtual DbSet<ImportBillDetail> ImportBillDetails { get; set; }
-        public virtual DbSet<News> News { get; set; }
+        public virtual DbSet<Giohang> Giohangs { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
-        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
+        public virtual DbSet<OrdersDetail> OrdersDetails { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Provider> Providers { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Bill> Bills { get; set; }
     }
 }

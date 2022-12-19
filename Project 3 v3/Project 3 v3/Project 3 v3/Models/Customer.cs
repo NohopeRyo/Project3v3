@@ -17,7 +17,7 @@ namespace Project_3_v3.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Customer()
         {
-            this.Orders = new HashSet<Order>();
+            this.Bills = new HashSet<Bill>();
         }
     
         public int CusID { get; set; }
@@ -27,6 +27,6 @@ namespace Project_3_v3.Models
         public string Address { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Bill> Bills { get; set; }
     }
 }

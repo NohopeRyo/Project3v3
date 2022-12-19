@@ -1,4 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+    bool isLoggedIn = true;
+    if(string.IsNullOrWhiteSpace(User.Identity.Name))
+    {
+        isLoggedIn = false;
+    }
+}
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -49,7 +57,7 @@
             <div class="col-lg-3 col-6 text-right">
                 <a href="/Home/viewCart" class="btn border">
                     <i class="fas fa-shopping-cart text-primary"></i>
-                    <span class="badge">0</span>
+                    <span class="badge">@ViewBag.giohangcount</span>
                 </a>
             </div>
         </div>
@@ -101,8 +109,19 @@
                             <a href="" class="nav-item nav-link">Contact</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0">
-                            <a href="https://localhost:44340/AdminShop/Login/Index" class="nav-item nav-link">Login</a>
-                            <a href="" class="nav-item nav-link">Register</a>
+                            @{
+                                if (isLoggedIn)
+                                {
+                                    <a href="https://localhost:44340/AdminShop/AdminShop/" class="nav-item nav-link">@User.Identity.Name</a>
+                                    <a href="/Login/Logout" class="nav-item nav-link">Logout</a>
+                                }
+                                else
+                                {
+                                    <a href="https://localhost:44340/Login/Login" class="nav-item nav-link">Login</a>
+                                    <a href="/Login/Register" class="nav-item nav-link">Register</a>
+                                }
+
+                            }
                         </div>
                     </div>
                 </nav>

@@ -14,19 +14,10 @@ namespace Project_3_v3.Models
     
     public partial class Provider
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Provider()
-        {
-            this.ImportBills = new HashSet<ImportBill>();
-        }
-    
         public int PrvID { get; set; }
         public string PrvName { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ImportBill> ImportBills { get; set; }
     }
 }

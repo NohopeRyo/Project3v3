@@ -7,24 +7,57 @@ using Project_3_v3.Models;
 
 namespace Project_3_v3.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
+        
         dataver2Entities db = new dataver2Entities();
+        [AllowAnonymous]
         public ActionResult Index()
         {
+            if (Session["giohang"] == null)
+            {
+                ViewBag.giohangcount = 0;
+            }
+            else
+            {
+                List<Giohang> gh = (List<Giohang>)Session["giohang"];
+                ViewBag.giohangcount = gh.Count;
+            }
             return View();
         }
         public ActionResult Category()
         {
             var ds = db.Products.ToList();
+            if (Session["giohang"] == null)
+            {
+                ViewBag.giohangcount = 0;
+            }
+            else
+            {
+                List<Giohang> gh = (List<Giohang>)Session["giohang"];
+                ViewBag.giohangcount = gh.Count;
+            }
             return View(ds);
         }
         public ActionResult Detail(int id)
         {
             var ds = db.Products.FirstOrDefault(s=>s.ProID==id);
+            if (Session["giohang"] == null)
+            {
+                ViewBag.giohangcount = 0;
+            }
+            else
+            {
+                List<Giohang> gh = (List<Giohang>)Session["giohang"];
+                ViewBag.giohangcount = gh.Count;
+            }
             return View(ds);
         }
-        [HttpPost]
+        public ActionResult Checkout() {
+            return View();
+        }
+        //[HttpPost]
         //public JsonResult Create(int id)
         //{
         //    var cart = (List<Order>)Session["SessionCart"] ?? new List<Order>();
@@ -49,47 +82,71 @@ namespace Project_3_v3.Controllers
         //    Session["SessionCart"] = cart;
         //    return Json("OK", JsonRequestBehavior.AllowGet);
         //}
-        public ActionResult AddCart(int id)
+        public ActionResult Buy(int ID)
         {
-            var spt = db.Products.FirstOrDefault(s => s.ProID== id);
-            if (Session["cart"] != null)
+            if (Session["giohang"]==null)
             {
-                List<OrderDetail> cart = (List<OrderDetail>)Session["cart"];
-
-                var kt = cart.FirstOrDefault(s => s.ProID == id);
-                if (kt == null)
+                Giohang a = new Giohang();
+                var sp = db.Products.Where(s=>s.ProID==ID).Single();
+                a.ID = sp.ProID;
+                a.Name = sp.Title;
+                a.Quantity = 1;
+                a.Price =(int)sp.Price;
+                a.Image = sp.Image;
+                List<Giohang> gh=new List<Giohang>();
+                gh.Add(a);
+                Session["giohang"]=gh;
+            }   
+            else
+            {
+                List<Giohang> gh = (List<Giohang>)Session["giohang"];
+                var test =gh.Find(s=>s.ID==ID);
+                if (test == null)
                 {
-                    OrderDetail sp = new OrderDetail() { ProID = id, Quantity = 1, Product = spt };
-                    cart.Add(sp);
-                    // Session["cart"] = cart;
+                    Giohang a = new Giohang();
+                    var sp = db.Products.Where(s => s.ProID == ID).Single();
+                    a.ID = sp.ProID;
+                    a.Name = sp.Title;
+                    a.Quantity = 1;
+                    a.Price = (int)sp.Price;
+                    a.Image = sp.Image;
+                    gh.Add(a);
                 }
                 else
                 {
-                    kt.Quantity = kt.Quantity + 1;
+                    test.Quantity = test.Quantity++;
                 }
-                Session["cart"] = cart;
-            }
-            else
-            {
-                List<OrderDetail> cart = new List<OrderDetail>();
-                OrderDetail sp = new OrderDetail() { ProID = id, Quantity = 1, Product = spt };
-                cart.Add(sp);
-                Session["cart"] = cart;
-            }
-
+                Session["giohang"] = gh;
+            }    
             return RedirectToAction("Index");
         }
-
-
         public ActionResult viewCart()
         {
-            List<Order> ds = (List<Order>)Session["cart"]?? new List<Order>();
-            List<Order> ds1 = new List<Order>();
-            foreach (var d in ds)
-            {
-                ds1.Add(d);
-            }
-            return View(ds1);
+            List<Giohang> gh = (List<Giohang>)Session["giohang"];
+            return View(gh);
         }
+        private int TotalQuantity()
+        {
+            int total = 0;
+            List<Giohang> lstGiohang = Session["giohang"] as List<Giohang>;
+            if(lstGiohang!=null)
+            {
+                total = (int)lstGiohang.Sum(n=>n.Quantity);
+            }
+            return total;
+        }
+         private double TotalPay()
+        {
+            double total = 0;
+            List<Giohang>lstgiohang = Session["Giohang"] as List<Giohang>;
+            if(lstgiohang!=null)
+            {
+
+                total = (double)lstgiohang.Sum(n => n.Total);
+            }
+            return total;
+        }
+
     }
+    
 }

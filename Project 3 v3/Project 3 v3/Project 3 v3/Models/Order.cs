@@ -15,13 +15,10 @@ namespace Project_3_v3.Models
     public partial class Order
     {
         public int OrdID { get; set; }
+        public Nullable<bool> Payment { get; set; }
+        public Nullable<bool> Status { get; set; }
+        public Nullable<System.DateTime> OrdTime { get; set; }
+        public Nullable<System.DateTime> ShipTime { get; set; }
         public Nullable<int> CusID { get; set; }
-        public System.DateTime OrderDate { get; set; }
-        public string DeliveryAddress { get; set; }
-        public string Status { get; set; }
-        public double TotalPay { get; set; }
-    
-        public virtual Customer Customer { get; set; }
-        public virtual OrderDetail OrderDetail { get; set; }
     }
 }

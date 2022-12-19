@@ -20,56 +20,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ImportBills">
-      <EntityTypeMapping TypeName="dataver2Model.ImportBill">
-        <MappingFragment StoreEntitySet="ImportBill">
-          <ScalarProperty Name="ImpID" ColumnName="ImpID" />
-          <ScalarProperty Name="ImpDate" ColumnName="ImpDate" />
-          <ScalarProperty Name="PrvID" ColumnName="PrvID" />
-          <ScalarProperty Name="UserID" ColumnName="UserID" />
-          <ScalarProperty Name="TotalPay" ColumnName="TotalPay" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ImportBillDetails">
-      <EntityTypeMapping TypeName="dataver2Model.ImportBillDetail">
-        <MappingFragment StoreEntitySet="ImportBillDetail">
-          <ScalarProperty Name="ImpID" ColumnName="ImpID" />
-          <ScalarProperty Name="ProID" ColumnName="ProID" />
-          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="News">
-      <EntityTypeMapping TypeName="dataver2Model.News">
-        <MappingFragment StoreEntitySet="News">
-          <ScalarProperty Name="NewsID" ColumnName="NewsID" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="PublicDate" ColumnName="PublicDate" />
-          <ScalarProperty Name="Content" ColumnName="Content" />
+    <EntitySetMapping Name="Giohangs">
+      <EntityTypeMapping TypeName="dataver2Model.Giohang">
+        <MappingFragment StoreEntitySet="Giohang">
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Image" ColumnName="Image" />
-          <ScalarProperty Name="UserID" ColumnName="UserID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Orders">
-      <EntityTypeMapping TypeName="dataver2Model.Order">
-        <MappingFragment StoreEntitySet="Order">
-          <ScalarProperty Name="OrdID" ColumnName="OrdID" />
-          <ScalarProperty Name="CusID" ColumnName="CusID" />
-          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
-          <ScalarProperty Name="DeliveryAddress" ColumnName="DeliveryAddress" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="TotalPay" ColumnName="TotalPay" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="OrderDetails">
-      <EntityTypeMapping TypeName="dataver2Model.OrderDetail">
-        <MappingFragment StoreEntitySet="OrderDetail">
-          <ScalarProperty Name="OrdID" ColumnName="OrdID" />
-          <ScalarProperty Name="ProID" ColumnName="ProID" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -112,11 +70,23 @@
     </EntitySetMapping>
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="dataver2Model.User">
-        <MappingFragment StoreEntitySet="User">
+        <MappingFragment StoreEntitySet="Users">
           <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bills">
+      <EntityTypeMapping TypeName="dataver2Model.Bill">
+        <MappingFragment StoreEntitySet="Bill">
+          <ScalarProperty Name="CusID" ColumnName="CusID" />
+          <ScalarProperty Name="PriceTotal" ColumnName="PriceTotal" />
+          <ScalarProperty Name="QuantityTotal" ColumnName="QuantityTotal" />
+          <ScalarProperty Name="ProID" ColumnName="ProID" />
+          <ScalarProperty Name="DateBill" ColumnName="DateBill" />
+          <ScalarProperty Name="IDBill" ColumnName="IDBill" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

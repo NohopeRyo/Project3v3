@@ -1,4 +1,5 @@
 ﻿@model Project_3_v3.Models.Product
+
 @{
     ViewBag.Title = "Detail";
     Layout = "~/Views/Shared/Shop.cshtml";
@@ -39,20 +40,7 @@
             <h3 class="font-weight-semi-bold mb-4">@Model.Price</h3>
             <p class="mb-4">@Model.Description</p>
             <div class="d-flex align-items-center mb-4 pt-2">
-                <div class="input-group quantity mr-3" style="width: 130px;">
-                    <div class="input-group-btn">
-                        <button class="btn btn-primary btn-minus">
-                            <i class="fa fa-minus"></i>
-                        </button>
-                    </div>
-                    <input type="text" class="form-control bg-secondary text-center" value="1">
-                    <div class="input-group-btn">
-                        <button class="btn btn-primary btn-plus">
-                            <i class="fa fa-plus"></i>
-                        </button>
-                    </div>
-                </div>
-                <a class="btn btn-primary px-3"href="/Home/AddCart/@Model.ProID"><i class="fa fa-shopping-cart mr-1"></i> Thêm vào giỏ hàng</a>
+                <a class="btn btn-primary px-3"href="/Home/Buy/@Model.ProID"><i class="fa fa-shopping-cart mr-1"></i> Thêm vào giỏ hàng</a>
             </div>
             <div class="d-flex pt-2">
                 <p class="text-dark font-weight-medium mb-0 mr-2">Share on:</p>

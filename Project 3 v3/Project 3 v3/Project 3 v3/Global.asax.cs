@@ -13,5 +13,9 @@ namespace Project_3_v3
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+        protected void Session_Start()
+        {
+            Session["giohang"] = null;
+        }
     }
 }

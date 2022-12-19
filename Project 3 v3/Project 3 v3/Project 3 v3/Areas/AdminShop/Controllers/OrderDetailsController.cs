@@ -15,7 +15,7 @@ namespace Project_3_v3.Areas.AdminShop.Controllers
         private dataver2Entities db = new dataver2Entities();
         public JsonResult Get()
         {
-            var list = db.OrderDetails.ToList();
+            var list = db.OrdersDetails.ToList();
             var kq = (from x in list
                       select new
                       {
@@ -28,7 +28,7 @@ namespace Project_3_v3.Areas.AdminShop.Controllers
         // GET: AdminShop/OrderDetails
         public ActionResult Index()
         {
-            return View(db.OrderDetails.ToList());
+            return View(db.OrdersDetails.ToList());
         }
 
         // GET: AdminShop/OrderDetails/Details/5
@@ -38,7 +38,7 @@ namespace Project_3_v3.Areas.AdminShop.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            OrderDetail orderDetail = db.OrderDetails.Find(id);
+            OrdersDetail orderDetail = db.OrdersDetails.Find(id);
             if (orderDetail == null)
             {
                 return HttpNotFound();
@@ -57,9 +57,9 @@ namespace Project_3_v3.Areas.AdminShop.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public JsonResult Create(OrderDetail l)
+        public JsonResult Create(OrdersDetail l)
         {
-            var add = db.OrderDetails.Add(l);
+            var add = db.OrdersDetails.Add(l);
             db.SaveChanges();
             return Json(true, JsonRequestBehavior.AllowGet);
         }
@@ -71,7 +71,7 @@ namespace Project_3_v3.Areas.AdminShop.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            OrderDetail orderDetail = db.OrderDetails.Find(id);
+            OrdersDetail orderDetail = db.OrdersDetails.Find(id);
             if (orderDetail == null)
             {
                 return HttpNotFound();
@@ -84,7 +84,7 @@ namespace Project_3_v3.Areas.AdminShop.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.\
         public JsonResult GetByID(int id)
         {
-            var all = db.OrderDetails.ToList();
+            var all = db.OrdersDetails.ToList();
             var kq = (from x in all
                       where x.OrdID == id
                       select new
@@ -96,9 +96,9 @@ namespace Project_3_v3.Areas.AdminShop.Controllers
             return Json(kq, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        public JsonResult Edit(OrderDetail loaimoi)
+        public JsonResult Edit(OrdersDetail loaimoi)
         {
-            var loaicu = db.OrderDetails.Where(x => x.OrdID == loaimoi.OrdID).FirstOrDefault();
+            var loaicu = db.OrdersDetails.Where(x => x.OrdID == loaimoi.OrdID).FirstOrDefault();
 
             db.Entry(loaicu).CurrentValues.SetValues(loaimoi);
             db.SaveChanges();
@@ -107,8 +107,8 @@ namespace Project_3_v3.Areas.AdminShop.Controllers
         [HttpDelete]
         public JsonResult DeleteObj(int id)
         {
-            var loaicu = db.OrderDetails.Where(x => x.OrdID == id).FirstOrDefault();
-            db.OrderDetails.Remove(loaicu);
+            var loaicu = db.OrdersDetails.Where(x => x.OrdID == id).FirstOrDefault();
+            db.OrdersDetails.Remove(loaicu);
             db.SaveChanges();
             return Json(true, JsonRequestBehavior.AllowGet);
         }
@@ -119,7 +119,7 @@ namespace Project_3_v3.Areas.AdminShop.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            OrderDetail orderDetail = db.OrderDetails.Find(id);
+            OrdersDetail orderDetail = db.OrdersDetails.Find(id);
             if (orderDetail == null)
             {
                 return HttpNotFound();
@@ -132,8 +132,8 @@ namespace Project_3_v3.Areas.AdminShop.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            OrderDetail orderDetail = db.OrderDetails.Find(id);
-            db.OrderDetails.Remove(orderDetail);
+            OrdersDetail orderDetail = db.OrdersDetails.Find(id);
+            db.OrdersDetails.Remove(orderDetail);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
